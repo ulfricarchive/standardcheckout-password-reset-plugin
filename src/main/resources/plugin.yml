@@ -1,0 +1,5 @@
+name: StandardCheckoutPasswords
+main: com.standardcheckout.plugin.passwords.StandardCheckoutPasswordsPlugin
+version: ${project.version}
+author: Ulfric LLC
+website: standardcheckout.com

@@ -3,7 +3,6 @@ package com.standardcheckout.plugin.passwords;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.time.Instant;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -44,7 +43,7 @@ public class StandardCheckoutClient {
 
 		ResetToken token = new ResetToken();
 		token.setCode(randomNumbers());
-		token.setCreated(Instant.now());
+		token.setTimestamp(System.currentTimeMillis());
 		request.setToken(token);
 
 		String json = gson.toJson(request);
@@ -58,6 +57,7 @@ public class StandardCheckoutClient {
 		try {
 			Response response = client.newCall(post).execute();
 			int code = response.code();
+			response.close();
 			if (code != 200) {
 				StandardCheckoutPasswordsPlugin.getInstance().getLogger().severe("Response code " + code);
 				return null;

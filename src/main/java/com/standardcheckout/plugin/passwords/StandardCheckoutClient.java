@@ -50,7 +50,6 @@ public class StandardCheckoutClient {
 		String json = gson.toJson(request);
 		Request post = new Request.Builder()
 				.cacheControl(CacheControl.FORCE_NETWORK)
-				.addHeader("Accept", "application/json")
 				.addHeader("User-Agent", "StandardCheckout")
 				.url("https://standardcheckout.com/internal/resetpassword")
 				.post(RequestBody.create(JSON, json))

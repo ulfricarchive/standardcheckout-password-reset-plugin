@@ -45,6 +45,7 @@ public class StandardCheckoutClient {
 		ResetToken token = new ResetToken();
 		token.setCode(randomNumbers());
 		token.setCreated(Instant.now());
+		request.setToken(token);
 
 		String json = gson.toJson(request);
 		Request post = new Request.Builder()
